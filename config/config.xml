@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <ModoEjecucion>True</ModoEjecucion>
+
+    <Produccion>
+        <Nombre>Prod</Nombre>
+        <Url>https://www.google.com/</Url>
+        <Ciudad>Quito</Ciudad>
+    </Produccion>
+    
+    <Test>
+        <Nombre>Test</Nombre>
+        <Url>https://www.google.com/</Url>
+        <Ciudad>Bogotá</Ciudad>
+    </Test>
+</Configuration>

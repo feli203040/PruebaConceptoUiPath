@@ -1,0 +1,651 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="IngresoDatosFactura" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="aXmlFactura" Type="InArgument(x:String)" />
+    <x:Property Name="aValorCoincide" Type="OutArgument(x:Boolean)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>885.6,7989.6</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>IngresoDatosFactura_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="IngresoDatosFactura" sap:VirtualizedContainerService.HintSize="896,7924.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="vFile" />
+      <Variable x:TypeArguments="x:Int32" Name="vCheckBoxCount">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:Int32" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+      <Variable x:TypeArguments="x:Int32" Name="i">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:Int32" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:Boolean" Name="vValorCoincide">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:Boolean" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="vPathDescargas">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">C:\Users\ROBOT-PC\Downloads\</Literal>
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: AS2 (2.4.01.002)" sap:VirtualizedContainerService.HintSize="833.6,7836" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="6001319b-3533-47ed-b34d-587c8681fdab" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="800,7596" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="vValorFacturaString" />
+              <Variable x:TypeArguments="x:Decimal" Name="vValorFacturaDecimal" />
+              <Variable x:TypeArguments="x:Double" Name="vTotalConvinations" />
+              <Variable x:TypeArguments="x:String" Name="vValorFacturaIngresadaString" />
+              <Variable x:TypeArguments="x:Decimal" Name="vValorFacturaIngresadaDecimal" />
+              <Variable x:TypeArguments="x:Int32" Name="j">
+                <Variable.Default>
+                  <Literal x:TypeArguments="x:Int32" />
+                </Variable.Default>
+              </Variable>
+              <Variable x:TypeArguments="x:Int32" Name="vCheckboxIndex">
+                <Variable.Default>
+                  <Literal x:TypeArguments="x:Int32" Value="7" />
+                </Variable.Default>
+              </Variable>
+              <Variable x:TypeArguments="x:String" Name="vMaxItems" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Cargar XML'" sap:VirtualizedContainerService.HintSize="737.6,225.6" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="6001319b-3533-47ed-b34d-587c8681fdab" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="http://ecuanros-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=26378&amp;idsFacturaProveedor=false" CVScreenId="9ad1be37-1c51-464d-b9c6-1c5dcabfde0c" CvElementArea="211, 774, 39, 31" CvType="Button" DesignTimeRectangle="222, 780, 20, 20" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl tableRow='4' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='ui-button-icon-left ui-icon ui-c ui-icon-bookmark' aaname='' /&gt;" Guid="6cd4d63b-e689-41e9-ae1a-2787e18568be" InformativeScreenshot="5991e833657db1f68325ac690aca2d40.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='AS2 (2.4.01.002)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="9ad1be37-1c51-464d-b9c6-1c5dcabfde0c" CvTextArea="31, 781, 85, 18" CvTextArgument="Cargar XML:" CvType="Text" DesignTimeRectangle="31, 775, 182, 30" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='panelCabeceraFacturaSRI' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='panelCabeceraFacturaSRI' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='columnaEtiqueta' aaname='Cargar XML: ' check:innerText='Cargar XML:' /&gt;" Guid="a58d051c-8901-4b8b-8225-76f566708ed1" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Examinar'" sap:VirtualizedContainerService.HintSize="737.6,225.6" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="6001319b-3533-47ed-b34d-587c8681fdab" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="http://ecuanros-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=26378&amp;idsFacturaProveedor=false" CVScreenId="4f93f5c3-158d-4f52-a4f7-a664fd025aa8" CvElementArea="886, 679, 119, 31" CvType="Button" DesignTimeRectangle="889, 683, 114, 26" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl aaname='Examinar' parentid='j_idt269' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl aaname='Examinar' parentid='j_idt269' type='' tag='SPAN' class='ui-button-text ui-c' check:innerText='Examinar' /&gt;" Guid="f47cc603-d717-4540-a2d6-bab7939d78b0" InformativeScreenshot="53f1befb6604df5d620761d08339d75d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='AS2 (2.4.01.002)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="4f93f5c3-158d-4f52-a4f7-a664fd025aa8" CvElementArea="886, 679, 119, 31" CvType="Button" DesignTimeRectangle="888, 682, 116, 28" ElementType="Button" FullSelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl aria-role='button' parentid='j_idt269' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl aria-role='button' parentid='j_idt269' type='' tag='SPAN' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left ui-fileupload-choose' aaname='' check:innerText='Examinar' /&gt;" Guid="dbab91a4-cbd9-4137-a20b-2fbef3af5ee3" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application: Abrir" sap:VirtualizedContainerService.HintSize="737.6,918.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="Simulate" ScopeGuid="f5e81174-1d88-47f7-9c03-9b4137fbe484" Version="V2">
+              <uix:NApplicationCard.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,595.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayBetweenKeys="0" DisplayName="Type Into 'No&amp;mbre'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="353.6,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="HardwareEvents" ScopeIdentifier="f5e81174-1d88-47f7-9c03-9b4137fbe484" Text="[vPathDescargas + aXmlFactura]" Version="V3">
+                      <uix:NTypeInto.Target>
+                        <uix:TargetAnchorable CVScreenId="356e583f-d96d-4b83-982e-93c2d71df23d" CvElementArea="220, 504, 462, 32" CvType="InputBox" DesignTimeRectangle="225, 511, 432, 20" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" Guid="95011ba2-de0c-4051-9b4f-0900de9f8c5a" InformativeScreenshot="44f7c5add9892a646747ada0e786815c.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Abrir' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CVScreenId="356e583f-d96d-4b83-982e-93c2d71df23d" CvTextArea="155, 512, 60, 15" CvTextArgument="Nombre:" CvType="Text" DesignTimeRectangle="157, 511, 58, 20" ElementType="Text" FullSelectorArgument="&lt;wnd ctrlid='1090' title='No&amp;amp;mbre:' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1090' title='No&amp;amp;mbre:' check:text='No&amp;amp;mbre:' /&gt;" Guid="b4a16d31-8734-410d-ba7a-a354cdb07db6" SearchSteps="Selector, FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NTypeInto.Target>
+                      <uix:NTypeInto.VerifyOptions>
+                        <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                          <uix:VerifyExecutionTypeIntoOptions.Retry>
+                            <InArgument x:TypeArguments="x:Boolean" />
+                          </uix:VerifyExecutionTypeIntoOptions.Retry>
+                          <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        </uix:VerifyExecutionTypeIntoOptions>
+                      </uix:NTypeInto.VerifyOptions>
+                    </uix:NTypeInto>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="353.6,218.4" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f5e81174-1d88-47f7-9c03-9b4137fbe484" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable CVScreenId="356e583f-d96d-4b83-982e-93c2d71df23d" CvElementArea="695, 541, 111, 34" CvType="InputBox" DesignTimeRectangle="696, 543, 110, 33" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlid='1' title='&amp;amp;Abrir' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1' title='&amp;amp;Abrir' check:text='unchecked' /&gt;" Guid="f1b1e4b3-3d51-4cb7-b8d9-9e31e5b9113d" InformativeScreenshot="ee2b5a9100552d8baf04f568b4a0e5fe.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Abrir' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CVScreenId="356e583f-d96d-4b83-982e-93c2d71df23d" CvElementArea="820, 541, 110, 34" CvTextArea="845, 550, 60, 15" CvTextArgument="Cancelar" CvType="Button" DesignTimeRectangle="821, 543, 110, 33" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlid='2' title='Cancelar' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='2' title='Cancelar' check:text='Cancelar' /&gt;" Guid="f5048543-71bc-46ed-a6a4-8cb6176b9637" SearchSteps="Selector, FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                      <uix:NClick.VerifyOptions>
+                        <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                          <uix:VerifyExecutionOptions.Retry>
+                            <InArgument x:TypeArguments="x:Boolean" />
+                          </uix:VerifyExecutionOptions.Retry>
+                          <uix:VerifyExecutionOptions.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:VerifyExecutionOptions.Timeout>
+                        </uix:VerifyExecutionOptions>
+                      </uix:NClick.VerifyOptions>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </uix:NApplicationCard.Body>
+              <uix:NApplicationCard.TargetApp>
+                <uix:TargetApp Area="0, 0, 781, 808" FilePath="*" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAATkSURBVDhPZdR7TFNXHAfwu2xQra9tvhkUGM8ipb1gBkJfgghCHT6Jy2RmJupfxmUhZoKAzk0SjaAICrSARGYMW1S2RUARkafANtDNJk5RKW0BaXuZywbcu/N1p6Wim7/kk99Jc37fk3vbHub/FSSeJX6kZJXDmsgsqnFYy44MayMxoo0kVk3kAFVv1bA5vytlkkCxyMM99nrt8lksqmODFc1R0kMWDdtPw0yUgw5PUqBoIDtBcZTJpFL0NEWG5l1RBCmcs+6Y6drlvdizcWWIbkjD6unme5RAQ2HRKIhFTalcHRaVnK7lxOyklPPUvUFlhL4hMljnzHDHMUwdG6QwqeV6OvjUNaxSwOwin6Z0BcAcF0Gchl5hipU9HYyL0F9RBCpcYSKvuR6XYqV5jzVyI90A90aY1SzMySpYNq/DUPp6WLalwZqeRKxb4oh1Iz10YwSxbJARK0W78cbaoLwQX9FsRlaZKjm+V93TlRolmNyB9FSYU7VwFOSD6/0J5gcWcKN/YGK4m/DGI4RvTyBTLQoXvkVOpm7K+YlmeZ/tengco/hmQ86WgmRTTcYqPFTJYKKPZ0pRY6jyHK5+b0RuzSh2lnLYZXiGrIsj+LHzNzgeVhOhV0v4LgUROmUvDPId4QcY+fm0hugKHXcwU4ObqSxMiTEYy89Dbe1d7K0aR3w+h8gch4v6aw77zo+jofse/hk4CqF7FYSOMCcidEgdfIe0gYmo/vCRrHr935uOJZLinTF4sCkR9s4u7Cu3IuZLDoqDDje7i/Yoh5zaEfw11gu+Jx5Cewj49hD6GoInqREmvEr3fEVVCmH1KWRPlgatn6aRQTOHjLJxyLJtiMi2vyajzA7rqBkTPWsgtAWCbwuYwYRXpj4Pq0ghYYYUknAiEblHt5EHD63YfsaO8CwbRTsNmenUDnrY+DMOU73OQH8a5DeDCTOsG5XqkydDDclEfjYJmyq3k9uP72DfhVHEfWWH9IBtRhj1wWE7MmssmLK10XcYC6FVQvlQ3hN8q/cAIy1PbgwtT3KElCcRCtHVm3GkvRhFLfex55wDKw/bEPrFmEvsERt208++a+2HcD/T9YXwt7wguCzn6LqeCS1dmxVcmmiiEFy6FtKyZMRUb0VhVy2OXzdid7UVH9OfzdYSG/ZeGIHhlhF3f60A37ECfIsXtRT8zSUQWpaahJZlB5mgQq0ysDihP7BkjRB4Zg2h3QnRVVuQ3VxAWh//Qoa4Z6TPPIy2J3fwbe8xXL66ioYseql5oTDZtKh7/IfFPoznUrHYJzv6UEBJvDGgJIG4FCcguCQRrD6NKM99ROLP7yCa6k+gq0lH4aVYDFx7jwa9O635HSdjX8WC3FCfN99y/Z+9Po9S+Bdp9f6nVz+lyPtFq+HkX7SaTNM6OzIqo1B32Q9/Nr0N/sb8F8aE5gX622fmTl8Ozpqv9fb02r9S53dSq/c7pTXSLlCgaxf/kxoSdlqF0xcDMVC/kIbMpeYIlJG/Mc/QZ5ijy0z3fHl9OWu+1ke07DOWXb4/6pDkhLrHt0Bj8i3UcJJC9UTASRXRlUWhvW7J1FTTbI5vmm2auDar/2f9rMOdJXPYzHTRfy/YV8tjidhDkq+U+BVqc2lgg6RAPRB+KhblF33xpH7eKN8kauSvi7LsdSJliM8bYveYuxjmXxHjXHQDHpSiAAAAAElFTkSuQmCC" InformativeScreenshot="73bca22967931336c6de83c4cb63e88b.png" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Abrir' /&gt;" Title="Abrir" />
+              </uix:NApplicationCard.TargetApp>
+            </uix:NApplicationCard>
+            <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="737.6,122.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
+            <uix:NGetText DisplayName="Get Text 'Cargar XML'" sap:VirtualizedContainerService.HintSize="737.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="6001319b-3533-47ed-b34d-587c8681fdab" TextString="[vValorFacturaString]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="http://ecuanros-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=26405&amp;idsFacturaProveedor=false" CVScreenId="aa6294c9-ca88-4a7b-8c67-52a86116eb83" CvTextArea="315, 406, 57, 16" CvType="AnyWordGroup" DesignTimeRectangle="318, 401, 150, 28" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl tableRow='4' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' tag='TD' class='' /&gt;" Guid="b36efd08-a393-4a91-bae3-8de925d6804b" InformativeScreenshot="4766c8df1526392493be91c7c8791e59.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='AS2 (2.4.01.002)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CVScreenId="aa6294c9-ca88-4a7b-8c67-52a86116eb83" CvTextArea="30, 406, 87, 17" CvTextArgument="Cargar XML:" CvType="Text" DesignTimeRectangle="31, 400, 182, 30" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='panelCabeceraFacturaSRI' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='panelCabeceraFacturaSRI' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='columnaEtiqueta' aaname='Cargar XML: ' check:innerText='Cargar XML:' /&gt;" Guid="2a400dce-ed1e-4886-8517-394b448b6250" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <Assign sap:VirtualizedContainerService.HintSize="737.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[vValorFacturaString]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[vValorFacturaString.Replace("$","")]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="737.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Decimal">[vValorFacturaDecimal]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Decimal">[Decimal.Parse(vValorFacturaString)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uix:NGetText DisplayName="Get Text 'Cargar XML'" sap:VirtualizedContainerService.HintSize="737.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="6001319b-3533-47ed-b34d-587c8681fdab" TextString="[vValorFacturaIngresadaString]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="http://ecuanros-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=26405&amp;idsFacturaProveedor=false" DesignTimeRectangle="1447, 917, 185, 34" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl aria-role='grid' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='7' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='grid' tag='TABLE' /&gt;&lt;webctrl type='' class='ui-state-default' tag='TD' /&gt;" Guid="e1e5f396-e008-4865-84d7-345a781f73d9" InformativeScreenshot="43f051490ad7ce8387844392d2015c27.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='AS2 (2.4.01.002)' /&gt;" SearchSteps="FuzzySelector" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="31, 917, 1416, 34" ElementType="Text" FullSelectorArgument="&lt;webctrl aria-role='grid' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='7' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='grid' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='ui-state-default' aaname='Total:' check:innerText='Total:' /&gt;" Guid="93f050e9-90ae-430b-a00e-0a108db34b39" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <Assign sap:VirtualizedContainerService.HintSize="737.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[vValorFacturaIngresadaString]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[vValorFacturaIngresadaString.Replace("$","")]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="737.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Decimal">[vValorFacturaIngresadaDecimal]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Decimal">[Decimal.Parse(vValorFacturaIngresadaString)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[ExtractDataTable]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Nº' ReferenceIdx='0' Name='Nº'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Código' ReferenceIdx='1' Name='Código'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Producto' ReferenceIdx='2' Name='Producto'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Unidad Compra' ReferenceIdx='3' Name='Unidad Compra'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Impuestos' ReferenceIdx='4' Name='Impuestos'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Cantidad' ReferenceIdx='5' Name='Cantidad'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Precio (U)' ReferenceIdx='6' Name='Precio (U)'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Descuento (U)' ReferenceIdx='7' Name='Descuento (U)'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Descuento (%)' ReferenceIdx='8' Name='Descuento (%)'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Descuento' ReferenceIdx='9' Name='Descuento'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Precio' ReferenceIdx='10' Name='Precio'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Origen' ReferenceIdx='11' Name='Origen'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='ICE' ReferenceIdx='12' Name='ICE'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-13' ReferenceIdx='13' Name='Column-13'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Nº' attr='fulltext' /&gt;&lt;column name='Código' attr='fulltext' /&gt;&lt;column name='Producto' attr='fulltext' /&gt;&lt;column name='Unidad Compra' attr='fulltext' /&gt;&lt;column name='Impuestos' attr='fulltext' /&gt;&lt;column name='Cantidad' attr='fulltext' /&gt;&lt;column name='Precio (U)' attr='fulltext' /&gt;&lt;column name='Descuento (U)' attr='fulltext' /&gt;&lt;column name='Descuento (%)' attr='fulltext' /&gt;&lt;column name='Descuento' attr='fulltext' /&gt;&lt;column name='Precio' attr='fulltext' /&gt;&lt;column name='Origen' attr='fulltext' /&gt;&lt;column name='ICE' attr='fulltext' /&gt;&lt;column name='Column-13' attr='fulltext' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="737.6,189.6" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="6001319b-3533-47ed-b34d-587c8681fdab" Version="V3">
+              <uix:NExtractData.Target>
+                <uix:TargetAnchorable BrowserURL="http://ecuanros-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=26405&amp;idsFacturaProveedor=false" DesignTimeRectangle="31, 466, 1820, 610" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl aria-role='grid' tableRow='2' tag='TABLE' /&gt;" Guid="5bd46cd5-4100-47cf-88ae-5e2d0626d788" InformativeScreenshot="b71b0aefb1c978f2c8d6a501e684ceb4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='AS2 (2.4.01.002)' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NExtractData.Target>
+            </uix:NExtractData>
+            <Assign sap:VirtualizedContainerService.HintSize="737.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_11">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[vCheckBoxCount]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[ExtractDataTable.RowCount - 6]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="737.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_10">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Double">[vTotalConvinations]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Double">[2 ^ vCheckBoxCount]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ReadTextFile File="{x:Null}" Content="[vMaxItems]" DisplayName="Read Text File" FileName="C:\Uipath\GestionRecibos\Datos\ParametroItemsFactura.txt" sap:VirtualizedContainerService.HintSize="737.6,112.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+            <If Condition="[vValorFacturaDecimal + 0.05 &gt;= vValorFacturaIngresadaDecimal and vValorFacturaDecimal - 0.05 &lt;= vValorFacturaIngresadaDecimal and Convert.ToInt32(vMaxItems) &lt;= vCheckBoxCount]" sap:VirtualizedContainerService.HintSize="737.6,3352.8" sap2010:WorkflowViewState.IdRef="If_5">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,193.6" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_23">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[vValorCoincide]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="704,2988.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While" sap:VirtualizedContainerService.HintSize="641.6,2900" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                    <ui:InterruptibleWhile.Body>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="608,2762.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While" sap:VirtualizedContainerService.HintSize="545.6,1276.8" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_2">
+                          <ui:InterruptibleWhile.Body>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,1130.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:Boolean" Name="vIsChecked" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[vIsChecked]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">[(i And (1 &lt;&lt; j)) &lt;&gt; 0]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[vCheckboxIndex]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[8 + j]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <If Condition="[vIsChecked]" sap:VirtualizedContainerService.HintSize="449.6,709.6" sap2010:WorkflowViewState.IdRef="If_2">
+                                <If.Then>
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,269.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NCheck Action="Check" DisplayName="Check/Uncheck 'CheckBox'" sap:VirtualizedContainerService.HintSize="353.6,180.8" sap2010:WorkflowViewState.IdRef="NCheck_2" ScopeIdentifier="6001319b-3533-47ed-b34d-587c8681fdab" Version="V3">
+                                      <uix:NCheck.Target>
+                                        <uix:TargetAnchorable BrowserURL="http://ecuanros-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=26405&amp;idsFacturaProveedor=false" CVScreenId="57bb20a6-c14d-43c5-a759-4f5b67f9fcbe" CvElementArea="848, 527, 26, 26" CvType="CheckBox" DesignTimeRectangle="851, 529, 16, 16" DesignTimeScaleFactor="1.25" ElementType="CheckBox" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='grid' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='{0}' tag='INPUT' /&gt;&quot;, vCheckboxIndex)]" FuzzySelectorArgument="&lt;webctrl aria-role='grid' tag='TABLE' /&gt;&lt;webctrl type='checkbox' tag='INPUT' class='' aaname='' /&gt;" Guid="f5076a7a-371b-46fe-99b0-9ab9aa1f4b6f" ImageBase64="" InformativeScreenshot="1a24dc943970873543fde3119c55069f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='AS2 (2.4.01.002)' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive" />
+                                      </uix:NCheck.Target>
+                                    </uix:NCheck>
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,269.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NCheck Action="Uncheck" DisplayName="Check/Uncheck 'CheckBox'" sap:VirtualizedContainerService.HintSize="353.6,180.8" sap2010:WorkflowViewState.IdRef="NCheck_3" ScopeIdentifier="6001319b-3533-47ed-b34d-587c8681fdab" Version="V3">
+                                      <uix:NCheck.Target>
+                                        <uix:TargetAnchorable BrowserURL="http://ecuanros-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=26405&amp;idsFacturaProveedor=false" CVScreenId="57bb20a6-c14d-43c5-a759-4f5b67f9fcbe" CvElementArea="848, 527, 26, 26" CvType="CheckBox" DesignTimeRectangle="851, 529, 16, 16" DesignTimeScaleFactor="1.25" ElementType="CheckBox" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='grid' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='{0}' tag='INPUT' /&gt;&quot;, vCheckboxIndex)]" FuzzySelectorArgument="&lt;webctrl aria-role='grid' tag='TABLE' /&gt;&lt;webctrl type='checkbox' tag='INPUT' class='' aaname='' /&gt;" Guid="f5076a7a-371b-46fe-99b0-9ab9aa1f4b6f" ImageBase64="" InformativeScreenshot="1a24dc943970873543fde3119c55069f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='AS2 (2.4.01.002)' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive" />
+                                      </uix:NCheck.Target>
+                                    </uix:NCheck>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <Assign sap:VirtualizedContainerService.HintSize="449.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[j]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[j+1]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </ui:InterruptibleWhile.Body>
+                          <ui:InterruptibleWhile.Condition>
+                            <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="j &lt;= vCheckBoxCount - 1" />
+                          </ui:InterruptibleWhile.Condition>
+                        </ui:InterruptibleWhile>
+                        <Assign sap:VirtualizedContainerService.HintSize="545.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_15">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[j]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="545.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_16">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[vCheckboxIndex]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">8</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="545.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[i]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[i+1]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Delay Duration="00:00:00.1000000" sap:VirtualizedContainerService.HintSize="545.6,122.4" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                        <uix:NGetText DisplayName="Get Text 'Cargar XML'" sap:VirtualizedContainerService.HintSize="545.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="6001319b-3533-47ed-b34d-587c8681fdab" TextString="[vValorFacturaIngresadaString]" Version="V3">
+                          <uix:NGetText.Target>
+                            <uix:TargetAnchorable BrowserURL="http://ecuanros-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=26405&amp;idsFacturaProveedor=false" DesignTimeRectangle="1447, 917, 185, 34" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl aria-role='grid' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='7' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='grid' tag='TABLE' /&gt;&lt;webctrl type='' class='ui-state-default' tag='TD' /&gt;" Guid="e1e5f396-e008-4865-84d7-345a781f73d9" InformativeScreenshot="43f051490ad7ce8387844392d2015c27.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='AS2 (2.4.01.002)' /&gt;" SearchSteps="FuzzySelector" Version="V4" Visibility="Interactive">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="31, 917, 1416, 34" ElementType="Text" FullSelectorArgument="&lt;webctrl aria-role='grid' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='7' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='grid' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='ui-state-default' aaname='Total:' check:innerText='Total:' /&gt;" Guid="93f050e9-90ae-430b-a00e-0a108db34b39" SearchSteps="FuzzySelector" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NGetText.Target>
+                        </uix:NGetText>
+                        <Assign sap:VirtualizedContainerService.HintSize="545.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_20">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[vValorFacturaIngresadaString]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[vValorFacturaIngresadaString.Replace("$","")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="545.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_21">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Decimal">[vValorFacturaIngresadaDecimal]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Decimal">[Decimal.Parse(vValorFacturaIngresadaString)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <If Condition="[vValorFacturaDecimal + 0.05 &gt;= vValorFacturaIngresadaDecimal and vValorFacturaDecimal - 0.05 &lt;= vValorFacturaIngresadaDecimal]" sap:VirtualizedContainerService.HintSize="545.6,516.8" sap2010:WorkflowViewState.IdRef="If_4">
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,250.4" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[vValorCoincide]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:Break sap:VirtualizedContainerService.HintSize="433.6,48" sap2010:WorkflowViewState.IdRef="Break_2" />
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,104.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ui:InterruptibleWhile.Body>
+                    <ui:InterruptibleWhile.Condition>
+                      <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="i &lt;= vTotalConvinations - 1" />
+                    </ui:InterruptibleWhile.Condition>
+                  </ui:InterruptibleWhile>
+                </Sequence>
+              </If.Else>
+            </If>
+            <If Condition="[vValorCoincide]" sap:VirtualizedContainerService.HintSize="737.6,781.6" sap2010:WorkflowViewState.IdRef="If_6">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,305.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Guardar'" sap:VirtualizedContainerService.HintSize="353.6,216.8" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="6001319b-3533-47ed-b34d-587c8681fdab" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="http://ecuanros-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=26405&amp;idsFacturaProveedor=false" CVScreenId="d74b40a2-0ed6-41e0-b657-304040e5fe3f" CvElementArea="227, 287, 111, 34" CvTextArea="261, 296, 61, 15" CvTextArgument="Guardar" CvType="Button" DesignTimeRectangle="232, 292, 105, 26" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl aaname=' Guardar' parentid='toolbar:save' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl aaname=' Guardar' parentid='toolbar:save' type='' tag='SPAN' class='ui-button-text ui-c' check:innerText='Guardar' /&gt;" Guid="f9e942d7-11ee-4a9d-92b1-e14f2f452641" InformativeScreenshot="30162602bd172992c62ef817528533ff.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='AS2 (2.4.01.002)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target CVScreenId="d74b40a2-0ed6-41e0-b657-304040e5fe3f" CvElementArea="227, 287, 111, 34" CvTextArea="261, 296, 61, 15" CvTextArgument="Guardar" CvType="Button" DesignTimeRectangle="231, 291, 107, 28" ElementType="Button" FullSelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl id='toolbar:save' tableRow='1' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl id='toolbar:save' type='submit' tag='BUTTON' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left' aaname='Guardar' check:innerText='Guardar' /&gt;" Guid="b740cbff-3877-437b-85ab-c052827b392d" SearchSteps="FuzzySelector, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,305.6" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Guardar'" sap:VirtualizedContainerService.HintSize="353.6,216.8" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="6001319b-3533-47ed-b34d-587c8681fdab" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="http://ecuanros-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=26405&amp;idsFacturaProveedor=false" CVScreenId="570dece4-f09f-4539-9b96-a939e4bb79c1" CvElementArea="336, 287, 116, 34" CvTextArea="370, 296, 66, 15" CvTextArgument="Cancelar" CvType="Button" DesignTimeRectangle="340, 292, 110, 26" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl aaname='Cancelar' parentid='toolbar:btnCancelar' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl aaname='Cancelar' parentid='toolbar:btnCancelar' type='' tag='SPAN' class='ui-button-text ui-c' check:innerText='Cancelar' /&gt;" Guid="5e3a9a3e-41fb-4619-ae10-080045dbb3de" InformativeScreenshot="705986e94e937219d29e30ba8ab92449.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='AS2 (2.4.01.002)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target CVScreenId="570dece4-f09f-4539-9b96-a939e4bb79c1" CvElementArea="336, 287, 116, 34" CvTextArea="370, 296, 66, 15" CvTextArgument="Cancelar" CvType="Button" DesignTimeRectangle="339, 291, 112, 28" ElementType="Button" FullSelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl id='toolbar:btnCancelar' tableRow='1' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='j_idt114' tag='TABLE' /&gt;&lt;webctrl id='toolbar:btnCancelar' type='submit' tag='BUTTON' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left' aaname='Cancelar' check:innerText='Cancelar' /&gt;" Guid="74802cb9-8e34-4f93-a5a5-314c977a8282" SearchSteps="FuzzySelector, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                </Sequence>
+              </If.Else>
+            </If>
+            <Assign sap:VirtualizedContainerService.HintSize="737.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_24">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[aValorCoincide]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">[vValorCoincide]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="737.6,112.8" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[vPathDescargas + aXmlFactura]" />
+            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="737.6,122.4" sap2010:WorkflowViewState.IdRef="Delay_4" />
+            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="737.6,161.6" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="w" KeyModifiers="Ctrl">
+              <ui:SendHotkey.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="a73c7e21-dc6c-438b-805d-b989afcf72f4">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:SendHotkey.Target>
+            </ui:SendHotkey>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADVElEQVRYR+2WWVJTQRiFM9ybhLdewl1ClpAluAQfZVCmgAEZWhQVZXAHWQpL8E0mmSHMXhQQlejv6b/7Dh0uVUkVedDyrzqVutVd3d85fR6S+j9/5aTf/RTp2RvJmquzUvO/ZGrht9Z7emC2tmfSb39IQBBr9kZrrk7p+ToBhABBZuv9T+bNtcjMXPuZme8EEC0GMTAKZK6+aLbf/2Ref5MQAUSLQQxMlErJbL/fyb68EJnpSz/z6opYDGJgAGJSaZ/77IuvEhCkBBBAKCmQAIZB2uT++bnITp372akvBBBAKAFmOoDhVNrn3pG+hAggBBBIgQQwYSrtce9MnApn4sx3Jj+TI5UUSAADCJ1KG92PnUhn/JQAAp2RM6kUh2EQdo9fD8mUAFRCKiyVDPoCXRX5wFbGHT0S7rMj3x07JoCQM64Uh2EQdg8YARjdkzu7cvmQD2523JFD6Y4eEkAIINAxRTAhCLsHDHoSTyWhK9MXzfck93RfuJWa71YOyB1RUiABTAii3Y+foCenfiwVA2LBtNaT3PCezA3vE0CgGgEGMjARCDsCjGxIJakrLbgf3BG58o6fG9ql3NAeAcaA7MdB2BFgBGB8+3ludaU19/mBLZkf3CaAEEAAoUAgBRKkUqlp95WDBTuVxK407z7ftyHy/Zt+vn+LAEIKhGEUSNmADO2xI8B4BiZ6Hqsr0Nhxi+5712W+d4MAQgDRUiAGRqeyy44AU7VSSe5K8+4LPWui8HjNLzz5RIXedQKMBglhGIQdAcbTqQRPZLoSPZECac19oXtFFnpWCRBaCgRikCgVdgSQqp1K7IkikObdd3QuiY6uZR8QxFIgIYwGQSrafd+G15AKFO8Kp8J7AeMBZjFKpVaFhFqzpuPRRwkIYnUtsywYDcKOAFO1UulL6Ep5R/ekvPshSgXSXamqtXBwuYB8iELFYAwIOwKMZz9RYld0UgPbxYZUwq6o9XBwobQujysC0e67V6p2KgGI1RXdk/6tkpVKrCtqPRxcZLu/LXYEEK8hlYauMIwVL2A2E7rC5/HgcK/hsiSxI/wW+Tv2PAld8fhgM0iliFQ2Y11ZBIhdQhyqIEp3yPojob7Dtc4lLTxPoWulBAjr8vgYkNb/lPzDk0r9AQGMKFv+tAbAAAAAAElFTkSuQmCC" InformativeScreenshot="0cca28c4ffdc838f95d44d5a0530f8d1.jpg" Selector="&lt;html app='chrome.exe' url='http://*-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=*&amp;amp;idsFacturaProveedor=false' /&gt;" Title="AS2 (2.4.01.002)" Url="http://*-as2.tessacorporation.com:8020/AS2/paginas/compras/procesos/facturaProveedor.jsf?idRecepcionProveedor=*&amp;idsFacturaProveedor=false" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
